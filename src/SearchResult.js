@@ -7,7 +7,6 @@ export default class SearchResult {
     this.$searchResult = document.createElement("div");
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
-    this.$inner
 
     this.data = initialData;
     this.onClick = onClick;
@@ -41,6 +40,10 @@ export default class SearchResult {
               .join("") : '검색된 결과가 없습니다.'
       }
     }
+
+    // this.$searchResult.addEventListener('click', (e)=>{
+
+    // })
 
     this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
       $item.addEventListener("click", () => {

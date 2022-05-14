@@ -71,7 +71,7 @@ export default class App {
           visible: true,
           catInfo : catInfo.data
         })
-        this.searchResult.setState(this.data)
+        this.setState(this.data)
       }
     });
 

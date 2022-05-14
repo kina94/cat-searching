@@ -8,7 +8,7 @@ export const api = {
       if(!res.ok) throw new Error('에러 발생')
       return await res.json()
     } catch(e){
-      throw new Error(`다음과 같은 에러 발생 ${e.message}${e.status}`)
+      throw new Error(`서버 오류입니다! 다시 검색해주세요. ${e.message}${e.status}`)
     }
   }, 
 
@@ -18,7 +18,7 @@ export const api = {
       if(!res.ok) throw new Error('에러 발생')
       return await res.json()
     } catch(e){
-      throw new Error(`다음과 같은 에러 발생 ${e.message}${e.status}`)
+      throw new Error(`서버 오류입니다! 다시 검색해주세요. ${e.message}${e.status}`)
     }
   },
 
@@ -28,7 +28,7 @@ export const api = {
       if(!res.ok) throw new Error('에러 발생')
       return await res.json()
     } catch(e){
-      throw new Error(`다음과 같은 에러 발생 ${e.message}${e.status}`)
+      throw new Error(`서버 오류입니다! 다시 검색해주세요. ${e.message}${e.status}`)
     }
   }
 };
