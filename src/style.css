@@ -27,7 +27,7 @@
   .SearchResult {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
   }
   
@@ -82,6 +82,12 @@
   .ImageInfo .content-wrapper img {
     width: 100%;
   }
+
+  @media screen and (max-width:768px){
+    .ImageInfo .content-wrapper{
+      width:95%;
+    }
+  }
   
   /* dark mode 처리
   @media (prefers-color-scheme: dark) {
@@ -90,5 +96,7 @@
       color: white;
     }
   }
-  *?
+  */
   
+
+// 반응형 처리
