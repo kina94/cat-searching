@@ -1,3 +1,5 @@
+import Loading from "./Loading.js";
+
 export default class SearchResult {
     $searchResult = null;
     data = null;
@@ -18,9 +20,14 @@ export default class SearchResult {
       this.data = nextData;
       this.render();
     }
+
+
   
     render() {
-      this.$searchResult.innerHTML = this.data
+      if(this.data.isLoading){
+        this.$searchResult.innerHTML='Loading...'
+      } else {
+        this.$searchResult.innerHTML = this.data
         .map(
           cat => `
             <div class="item">
@@ -29,6 +36,8 @@ export default class SearchResult {
           `
         )
         .join("");
+      }
+
   
       this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
         $item.addEventListener("click", () => {
