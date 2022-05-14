@@ -1,6 +1,7 @@
 import SearchInput from './SearchInput.js'
 import SearchResult from './SearchResult.js'
 import ImageInfo from './ImageInfo.js'
+import Header from './Header.js'
 import {api} from './api.js'
 
 console.log("app is running!");
@@ -17,7 +18,7 @@ export default class App {
   
     //로딩창 토글
     const loadingToggle = () =>{
-      this.searchResult.setState({
+      this.setState({
         isLoading:true
       })
     }
@@ -45,6 +46,14 @@ export default class App {
       this.setState(res.data)
       localStorage.setItem('cats', JSON.stringify(res.data))
     }
+
+    this.header = new Header({
+      $target,
+      onClick: async() => {
+        const catGif = await api.theCatApi()
+        this.setState(catGif[0])
+      }
+    })
 
     //검색창
     this.searchInput = new SearchInput({

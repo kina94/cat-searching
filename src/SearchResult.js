@@ -2,12 +2,12 @@ export default class SearchResult {
   $searchResult = null;
   data = null;
   onClick = null;
+  gifUrl = null;
 
   constructor({ $target, initialData, onClick }) {
     this.$searchResult = document.createElement("section");
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
-
 
     this.data = initialData;
     this.onClick = onClick;
@@ -19,16 +19,26 @@ export default class SearchResult {
     this.data = nextData;
     this.render();
   }
+  
 
   render() {
-    if (this.data === null) {
-      this.$searchResult.innerHTML = '검색어 입력!'
+    if (this.data.breeds) {
+      this.$searchResult.innerHTML =
+      `<div class='Loading'>
+      <img class='Loading' src='${this.data.url}'/>
+      </div>
+      `
     } else {
       if (this.data.isLoading) {
-        this.$searchResult.innerHTML = 'Loading...'
+        this.$searchResult.innerHTML = 
+        `<div class='Loading'>
+        <div class='LoadingSpinner'></div>
+        <p class='LoadingMessage'>Loading...</p>
+        </div>
+        `
       } else {
         this.$searchResult.innerHTML =
-          this.data.length != 0 ?
+          this.data.length > 1 ?
             this.data.map(
               (cat, index) => `
               <div id=${index} class="item">
