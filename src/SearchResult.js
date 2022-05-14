@@ -19,8 +19,6 @@ export default class SearchResult {
     this.render();
   }
 
-
-
   render() {
     if (this.data === null) {
       this.$searchResult.innerHTML = '검색어 입력!'
@@ -31,8 +29,8 @@ export default class SearchResult {
         this.$searchResult.innerHTML =
           this.data.length != 0 ?
             this.data.map(
-              cat => `
-              <div class="item">
+              (cat,index) => `
+              <div id=${index} class="item">
                 <img src=${cat.url} alt=${cat.name} />
               </div>
             `
@@ -41,14 +39,15 @@ export default class SearchResult {
       }
     }
 
-    // this.$searchResult.addEventListener('click', (e)=>{
+    this.$searchResult.addEventListener('click', (e)=>{
+      const itemId = e.target.parentNode.id
+      this.onClick(this.data[itemId])
+    })
 
-    // })
-
-    this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
-      $item.addEventListener("click", () => {
-        this.onClick(this.data[index]);
-      });
-    });
+    // this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
+    //   $item.addEventListener("click", () => {
+    //     this.onClick(this.data[index]);
+    //   });
+    // });
   }
 }
