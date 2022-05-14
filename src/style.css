@@ -218,7 +218,7 @@
 
 
   .LoadingMessage{
-    font-size:48px;
+    font-size:3vh;
     font-weight:bold;
     opacity:0.7;
     margin:0;
