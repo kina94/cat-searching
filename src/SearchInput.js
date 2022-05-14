@@ -25,6 +25,12 @@ export default class SearchInput {
       }
     });
 
+    this.$searchSection.querySelector('.SearchInput').addEventListener('click', e => {
+      if(e.target.value){
+        e.target.value = ''
+      } 
+    })
+
     this.$searchSection.querySelector('.RandomButton').addEventListener('click', () =>{
       this.onClick()
     })
