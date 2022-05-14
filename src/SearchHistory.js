@@ -1,8 +1,8 @@
 export default class SearchHistory {
     data = null
-    constructor({ $target, onClick }) {
+    constructor({ $target, data }) {
         this.$target = $target
-        this.$onClick = onClick
+        this.data = data
         const $searchHistory = document.createElement('div')
         this.$searchHistory = $searchHistory
         $searchHistory.className = 'SearchHistory'

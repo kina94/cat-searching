@@ -3,17 +3,16 @@ import SearchHistory from "./SearchHistory.js";
 const TEMPLATE = '<input type="text">';
 
 export default class SearchInput {
-  searchKeyword = []
-  constructor({ $target, onSearch, onRandomClick, onHistoryClick }) {
+  constructor({ $target, onSearch, onRandomClick, onHistoryClick, searchKeyword }) {
     this.$target = $target
     this.onSearch = onSearch
     this.onRandomClick = onRandomClick
     this.onHistoryClick = onHistoryClick
+    this.searchKeyword = searchKeyword
     const $searchSection = document.createElement('section');
     this.$searchSection = $searchSection
     $searchSection.className = 'SearchSection'
     $target.appendChild($searchSection)
-
     this.render();
   }
 
@@ -36,11 +35,6 @@ export default class SearchInput {
     this.$searchSection.querySelector('.SearchInput').addEventListener("keyup", e => {
       if (e.keyCode === 13) {
         this.onSearch(e.target.value);
-        if(this.searchKeyword.length>5){
-          this.searchKeyword.shift()
-        } else{
-          this.searchKeyword.unshift(e.target.value)
-        }
         searchHistory.setState(this.searchKeyword)
       }
     });
