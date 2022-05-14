@@ -1,5 +1,3 @@
-import Loading from "./Loading.js";
-
 export default class SearchResult {
     $searchResult = null;
     data = null;
