@@ -8,6 +8,7 @@ export default class SearchResult {
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
 
+
     this.data = initialData;
     this.onClick = onClick;
 
@@ -19,6 +20,17 @@ export default class SearchResult {
     this.render();
   }
 
+  // LazyLoader = (target) => {
+  //   const io = new IntersectionObserver(entries => {
+  //     if (entries.some(entry => entry.intersectionRatio > 0)) {
+  //       target.style.border = '5px solid black'
+  //     }
+  //   }, {threshold: 0.5})
+  //   io.observe(target)
+  //   return io
+  // }
+
+
   render() {
     if (this.data === null) {
       this.$searchResult.innerHTML = '검색어 입력!'
@@ -29,21 +41,31 @@ export default class SearchResult {
         this.$searchResult.innerHTML =
           this.data.length != 0 ?
             this.data.map(
-              (cat,index) => `
+              (cat, index) => `
               <div id=${index} class="item">
-                <img src=${cat.url} alt=${cat.name} />
+                <img src=${cat.url} title=${cat.name} loading='lazy' alt=${cat.name}
+                width='200' height='200'>
               </div>
             `
             )
-              .join("") : '검색된 결과가 없습니다.'
+              .join(""): 
+              
+              '검색된 결과가 없습니다.'
       }
     }
 
-    this.$searchResult.addEventListener('click', (e)=>{
-      const itemId = e.target.parentNode.id
-      this.onClick(this.data[itemId])
-    })
+    // const items = document.querySelectorAll('.item')
+    // const ioWrap = []
+    // for (const item of items) {
+    //   ioWrap.push(this.LazyLoader(item))
+    // }
 
+    this.$searchResult.addEventListener('click', (e) => {
+      const itemId = e.target.parentNode.id
+      if(itemId){
+              this.onClick(this.data[itemId])
+      }
+    })
     // this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
     //   $item.addEventListener("click", () => {
     //     this.onClick(this.data[index]);

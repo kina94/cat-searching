@@ -14,6 +14,7 @@ export default class App {
     const savedCats = localStorage.getItem('cats')
     let searchKeyword = savedHistory ? JSON.parse(savedHistory) : []
 
+  
     //로딩창 토글
     const loadingToggle = () =>{
       this.searchResult.setState({
@@ -72,7 +73,7 @@ export default class App {
           catInfo : catInfo.data
         })
         this.setState(this.data)
-      }
+      },
     });
 
     //고양이 상세 이미지
@@ -88,6 +89,8 @@ export default class App {
         })
       }
     });
+
+    
   }
 
   setState(nextData) {
