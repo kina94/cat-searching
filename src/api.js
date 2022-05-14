@@ -20,5 +20,15 @@ export const api = {
     } catch(e){
       throw new Error(`다음과 같은 에러 발생 ${e.message}${e.status}`)
     }
+  },
+
+  fetchCatInfo : async(catId) =>{
+    try{
+      const res = await fetch(`${API_ENDPOINT}/api/cats/${catId}`)
+      if(!res.ok) throw new Error('에러 발생')
+      return await res.json()
+    } catch(e){
+      throw new Error(`다음과 같은 에러 발생 ${e.message}${e.status}`)
+    }
   }
 };
