@@ -40,7 +40,7 @@ export default class ImageInfo {
   
     render() {
       if (this.data.visible) {
-        const { name, url, temperament, origin } = this.data.image;
+        const { name, url, temperament, origin } = this.data.catInfo;
   
         this.$imageInfo.innerHTML = `
           <div class="content-wrapper">
