@@ -1,15 +1,18 @@
 @font-face {
-  font-family: 'Nanum Gothic', sans-serif;
     font-weight: normal;
     font-style: normal;
   }
+   *{
+    font-family: 'Stylish', sans-serif;
+   }
   
   html {
     box-sizing: border-box;
   }
   
-  body * {
-    font-family: 'Nanum Gothic', sans-serif;
+  body {
+    margin:0;
+    background-color:#fdfdf7;
   }
   
   *,
@@ -17,24 +20,150 @@
   *:after {
     box-sizing: inherit;
   }
+
+  .header{
+    text-align:center;
+    font-size:24px;
+    background-color:#f9f8e6;
+    color:#f9f8e6;
+    font-weight:bold;
+  }
+
+  .header img:last-child{
+    height:300px;
+    cursor:pointer;
+  }
   
   #App {
     margin: 1.5em auto;
     max-width: 1200px;
     column-gap: 1.5em;
+    border: 50px solid transparent;
+    border-radius:30px;
+    background-image: linear-gradient(#fff, #fff), 
+    linear-gradient(180deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;  
+  }
+
+  .SearchSection{
+    width:100%;
+    width:100%;
+    background-color:#f9f8e6;;
+    border-bottom: 1px solid #ff8b8b;
+  }
+
+  .SearchSection .Search{
+    display:flex;
   }
   
+  .SearchInput {
+    width: 100%;
+    font-size: 48px;
+    font-weight:bold;
+    padding: 10px;
+    text-align:center;
+    color: #ff8b8b;
+    padding:30px;
+    border:none;
+    background-color:#fdfdf7;
+    opacity:0.9;
+  }
+
+  .SearchInput::placeholder{
+    color: #ff8b8b;
+  }
+  
+  .SearchInput:focus{
+    outline:none;
+  }
+
+  .SearchHistory ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+  }
+
+  .SearchHistory li{
+    display:flex;
+    width:150px;
+    height:50px;
+    background-color:white;
+    margin-left:20px;
+    justify-content: center;
+    align-items: center;
+    border-radius:5px;
+    opacity:0.65;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    font-size:18px;
+    cursor:pointer;
+    transition: all 50ms ease-in;
+  }
+
+  .SearchHistory li span{
+    font-size:18px;
+    margin-left: 10px;
+    cursor:pointer;
+    transition: all 100ms ease-in;
+  }
+
+  .SearchHistory li span:hover{
+    transform : scale(1.3);
+  }
+
+  .SearchHistory li:hover{
+    transform : scale(1.05);
+  }
+
+  .SearchHistory li:first-child{
+    margin-left:0;
+  }
+
+  .RandomButton{
+    position:fixed;
+    right:50px;;
+    bottom:50px;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    cursor:pointer;
+    background-color:#fdfdf7;
+    border: 1px solid rgba(255, 139, 139, 0.4);
+    box-shadow: rgba(255, 139, 139, 0.4) 5px 5px, rgba(255, 139, 139, 0.3) 10px 10px, rgba(255, 139, 139, 0.2) 15px 15px, rgba(255, 139, 139, 0.1) 20px 20px, rgba(255, 139, 139, 0.05) 25px 25px;
+  }
+
+  .RandomButton img{
+    position:fixed;
+    right:47px;;
+    bottom:47px;
+    width:120px;
+    border-radius:50%;
+  }
+
+  .RandomButton span{
+    position:fixed;
+    bottom:175px;
+    right:70px;
+    font-size:24px;
+    font-weight:bold;
+    color:#2e2e2e;
+    opacity:0.9;
+  }
+
   .SearchResult {
-    margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
+    background-color:#fdfdf7;
+    padding:30px;
   }
   
   .SearchResult img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius:5px;
   }
   
   .SearchResult .item {
@@ -44,12 +173,7 @@
     width: 100%;
   }
   
-  .SearchInput {
-    width: 100%;
-    font-size: 40px;
-    padding: 10px 15px;
-  }
-  
+
   .ImageInfo {
     position: fixed;
     left: 0;
@@ -77,6 +201,7 @@
     background-color: #fff;
     border: 1px solid #eee;
     border-radius: 5px;
+    
   }
   
   .ImageInfo .content-wrapper img {

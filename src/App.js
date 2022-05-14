@@ -24,10 +24,11 @@ export default class App {
 
     //키보드로 서치할 때마다 검색 기록을 추가하고 로컬스토리지에 저장
     const addSearchKeyword = (keyword) =>{
-      if(searchKeyword.length>5){
+      if(searchKeyword.length>4){
         searchKeyword.shift()
+        searchKeyword.push(keyword)
       } else{
-        searchKeyword.unshift(keyword)
+        searchKeyword.push(keyword)
       }
       localStorage.setItem('search', JSON.stringify(searchKeyword))
     }
@@ -57,6 +58,11 @@ export default class App {
       },
       onHistoryClick: (keyword) => { // 히스토리 검색
         handleSearch(keyword, false)
+      },
+      onHistoryDeleteClick: (deleteValue) => {
+        const index = searchKeyword.indexOf(deleteValue)
+        searchKeyword.splice(index,1)
+        localStorage.setItem('search', JSON.stringify(searchKeyword))
       },
       searchKeyword
     });

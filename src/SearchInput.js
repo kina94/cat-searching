@@ -3,11 +3,13 @@ import SearchHistory from "./SearchHistory.js";
 const TEMPLATE = '<input type="text">';
 
 export default class SearchInput {
-  constructor({ $target, onSearch, onRandomClick, onHistoryClick, searchKeyword }) {
+  constructor({ $target, onSearch, onRandomClick, onHistoryClick, 
+    onHistoryDeleteClick, searchKeyword }) {
     this.$target = $target
     this.onSearch = onSearch
     this.onRandomClick = onRandomClick
     this.onHistoryClick = onHistoryClick
+    this.onHistoryDeleteClick = onHistoryDeleteClick
     this.searchKeyword = searchKeyword
     const $searchSection = document.createElement('section');
     this.$searchSection = $searchSection
@@ -19,12 +21,24 @@ export default class SearchInput {
   render() {
     this.$searchSection.innerHTML =
       `
-    <input class='SearchInput' placeholder='고양이를 검색해보세요.' autofocus/>
-    <button class='RandomButton'>🐱</button>
+    <div class='Search'>
+    <input class='SearchInput' type='text' placeholder='고양이 종류를 검색해보세요🐱' autofocus/>
+    <button class='RandomButton'>
+    <span>Click me!</span>
+    <img src='./assets/sad-cat.png'>
+    </button>
+    </div>
     `
 
     const searchHistory = new SearchHistory({$target: this.$searchSection,
       data: this.searchKeyword})
+
+    this.$searchSection.addEventListener('click', (e)=>{
+      if(e.target.className === 'delete'){
+        this.onHistoryDeleteClick(e.target.closest('li').id)
+        searchHistory.setState(this.searchKeyword)
+      }
+    })
 
     this.$searchSection.addEventListener('click', (e)=>{
       if(this.searchKeyword.includes(e.target.id)){
