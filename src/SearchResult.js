@@ -23,7 +23,6 @@ export default class SearchResult {
 
 
   render() {
-    console.log(this.data)
     if (this.data === null) {
       this.$searchResult.innerHTML = '검색어 입력!'
     } else {
