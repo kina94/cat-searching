@@ -2,20 +2,40 @@ export default class ImageInfo {
     $imageInfo = null;
     data = null;
   
-    constructor({ $target, data }) {
+    constructor({ $target, data, modalClose }) {
       const $imageInfo = document.createElement("div");
       $imageInfo.className = "ImageInfo";
       this.$imageInfo = $imageInfo;
       $target.appendChild($imageInfo);
   
       this.data = data;
-  
+      this.modalClose = modalClose;
+    
       this.render();
     }
   
     setState(nextData) {
       this.data = nextData;
       this.render();
+    }
+
+    //모달 닫기
+    handleModalClose() {
+      this.$imageInfo.addEventListener('click', (e)=>{
+        try{
+          if(e.target.className==='ImageInfo' || e.target.className==='close'){
+            this.modalClose()
+          }
+        } catch(e){
+          return
+        }
+      })
+
+      window.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape'){
+          this.modalClose()
+        }
+      })
     }
   
     render() {
@@ -38,6 +58,10 @@ export default class ImageInfo {
       } else {
         this.$imageInfo.style.display = "none";
       }
+
+      this.handleModalClose()
     }
+
+
   }
   
