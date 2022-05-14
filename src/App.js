@@ -67,13 +67,13 @@ export default class App {
       initialData: JSON.parse(savedCats),
       onClick: async(image) => {
         loadingToggle()
-        const catInfo = await api.fetchCatInfo(image.id)
-        this.imageInfo.setState({
-          visible: true,
-          catInfo : catInfo.data
-        })
-        this.setState(this.data)
-      },
+          const catInfo = await api.fetchCatInfo(image.id)
+          this.imageInfo.setState({
+            visible: true,
+            catInfo : catInfo.data
+          })
+          this.setState(this.data)
+        },
     });
 
     //고양이 상세 이미지
