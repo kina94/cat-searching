@@ -21,13 +21,20 @@ export default class App {
         const cats = await api.fetchCats(keyword)
         this.setState(cats.data)
       },
-      onClick: async() => {
+      onRandomClick: async() => {
         this.searchResult.setState({
           isLoading:true,
         })
         const cats = await api.randomFetchCats()
         this.setState(cats.data)
-      }
+      },
+      onHistoryClick: async(keyword) => {
+        this.searchResult.setState({
+          isLoading:true,
+        })
+        const cats = await api.fetchCats(keyword)
+        this.setState(cats.data)
+      },
     });
 
     this.searchResult = new SearchResult({

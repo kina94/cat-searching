@@ -4,10 +4,11 @@ const TEMPLATE = '<input type="text">';
 
 export default class SearchInput {
   searchKeyword = []
-  constructor({ $target, onSearch, onClick }) {
+  constructor({ $target, onSearch, onRandomClick, onHistoryClick }) {
     this.$target = $target
     this.onSearch = onSearch
-    this.onClick = onClick
+    this.onRandomClick = onRandomClick
+    this.onHistoryClick = onHistoryClick
     const $searchSection = document.createElement('section');
     this.$searchSection = $searchSection
     $searchSection.className = 'SearchSection'
@@ -25,6 +26,12 @@ export default class SearchInput {
 
     const searchHistory = new SearchHistory({$target: this.$searchSection,
       data: this.searchKeyword})
+
+    this.$searchSection.addEventListener('click', (e)=>{
+      if(this.searchKeyword.includes(e.target.id)){
+        this.onHistoryClick(e.target.id)
+      }
+    })
 
     this.$searchSection.querySelector('.SearchInput').addEventListener("keyup", e => {
       if (e.keyCode === 13) {
@@ -45,7 +52,7 @@ export default class SearchInput {
     })
 
     this.$searchSection.querySelector('.RandomButton').addEventListener('click', () =>{
-      this.onClick()
+      this.onRandomClick()
     })
   }
 }
