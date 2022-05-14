@@ -12,38 +12,41 @@ export default class App {
   constructor($target) {
     this.$target = $target;
 
+    const loadingToggle = () =>{
+      this.searchResult.setState({
+        isLoading:true
+      })
+    }
+
+    const handleSearch = async(keyword, isRandom) => {
+      loadingToggle()
+      let res = null
+      if(isRandom){
+        res = await api.randomFetchCats()
+      } else{
+        res = await api.fetchCats(keyword)
+      }
+      this.setState(res.data)
+    }
+
     this.searchInput = new SearchInput({
       $target,
-      onSearch: async(keyword) => {
-        this.searchResult.setState({
-          isLoading:true,
-        })
-        const cats = await api.fetchCats(keyword)
-        this.setState(cats.data)
+      onSearch: (keyword) => {
+        handleSearch(keyword, false)
       },
-      onRandomClick: async() => {
-        this.searchResult.setState({
-          isLoading:true,
-        })
-        const cats = await api.randomFetchCats()
-        this.setState(cats.data)
+      onRandomClick: () => {
+        handleSearch(null, true)
       },
-      onHistoryClick: async(keyword) => {
-        this.searchResult.setState({
-          isLoading:true,
-        })
-        const cats = await api.fetchCats(keyword)
-        this.setState(cats.data)
-      },
+      onHistoryClick: (keyword) => {
+        handleSearch(keyword, false)
+      }
     });
 
     this.searchResult = new SearchResult({
       $target,
       initialData: this.data,
       onClick: async(image) => {
-        this.searchResult.setState({
-          isLoading:true,
-        })
+        loadingToggle()
         const catInfo = await api.fetchCatInfo(image.id)
         this.imageInfo.setState({
           visible: true,
