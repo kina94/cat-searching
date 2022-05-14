@@ -17,7 +17,6 @@ export default class SearchHistory {
     }
 
     render() {
-        console.log(this.data)
         if (this.data!=null) {
             this.$searchHistory.innerHTML =
                 `
