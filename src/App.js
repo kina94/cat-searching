@@ -1,30 +1,44 @@
 import SearchInput from './SearchInput.js'
-import SearchResult from './SearchInput.js'
+import SearchResult from './SearchResult.js'
 import ImageInfo from './ImageInfo.js'
+import {api} from './api.js'
 
 console.log("app is running!");
 
 export default class App {
   $target = null;
-  data = [];
+  data = null;
 
   constructor($target) {
     this.$target = $target;
 
     this.searchInput = new SearchInput({
       $target,
-      onSearch: keyword => {
-        api.fetchCats(keyword).then(({ data }) => this.setState(data));
+      onSearch: async(keyword) => {
+        const cats = await api.fetchCats(keyword)
+        this.searchResult.setState({
+          isLoading:true,
+        })
+        this.setState(cats.data)
+      },
+      onClick: async() => {
+        const cats = await api.randomFetchCats()
+        this.searchResult.setState({
+          isLoading:true,
+        })
+        this.setState(cats.data)
       }
     });
 
     this.searchResult = new SearchResult({
       $target,
       initialData: this.data,
-      onClick: image => {
+      onClick: async(image) => {
+        const catInfo = await api.fetchCatInfo(image.id)
         this.imageInfo.setState({
+          isLoading:false,
           visible: true,
-          image
+          catInfo : catInfo.data
         });
       }
     });
@@ -34,12 +48,16 @@ export default class App {
       data: {
         visible: false,
         image: null
+      },
+      modalClose : () => {
+        this.imageInfo.setState({
+          visible:false,
+        })
       }
     });
   }
 
   setState(nextData) {
-    console.log(this);
     this.data = nextData;
     this.searchResult.setState(nextData);
   }
