@@ -10,7 +10,8 @@
   }
   
   body {
-    margin: 0;
+    margin-top:20px;
+    margin-bottom:20px;
     background-color:#fdfdf7;
   }
   
@@ -290,6 +291,9 @@
   }
 
   @media screen and (max-width:415px){
+    body{
+      margin:0
+    }
       .SearchResult{
         display:flex !important;
         flex-direction:column !important;
