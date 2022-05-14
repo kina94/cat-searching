@@ -19,19 +19,16 @@ export default class SearchResult {
     this.data = nextData;
     this.render();
   }
-  
+
 
   render() {
-    if (this.data.breeds) {
-      this.$searchResult.innerHTML =
-      `<div class='Loading'>
-      <img class='Loading' src='${this.data.url}'/>
-      </div>
-      `
+    if (this.data === null) {
+      this.$searchResult.style.display='none';
     } else {
+      this.$searchResult.style.display='grid';
       if (this.data.isLoading) {
-        this.$searchResult.innerHTML = 
-        `<div class='Loading'>
+        this.$searchResult.innerHTML =
+          `<div class='Loading'>
         <div class='LoadingSpinner'></div>
         <p class='LoadingMessage'>Loading...</p>
         </div>
@@ -47,9 +44,10 @@ export default class SearchResult {
               </div>
             `
             )
-              .join(""): 
-              
-              '검색된 결과가 없습니다.'
+              .join("") :
+            `<div>
+              <img class='CatGif' src='${this.data.url}'/>
+             </div>`
       }
     }
 
@@ -60,7 +58,7 @@ export default class SearchResult {
     //   }
     // })
 
-    
+
     this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
       $item.addEventListener("click", () => {
         this.onClick(this.data[index]);

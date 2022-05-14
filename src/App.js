@@ -15,7 +15,6 @@ export default class App {
     const savedCats = localStorage.getItem('cats')
     let searchKeyword = savedHistory ? JSON.parse(savedHistory) : []
 
-  
     //로딩창 토글
     const loadingToggle = () =>{
       this.setState({
@@ -50,6 +49,7 @@ export default class App {
     this.header = new Header({
       $target,
       onClick: async() => {
+        loadingToggle()
         const catGif = await api.theCatApi()
         this.setState(catGif[0])
       }
