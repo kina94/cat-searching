@@ -1,6 +1,5 @@
 @font-face {
-    font-family: "Goyang";
-    src: url("fonts/Goyang.woff") format("woff");
+  font-family: 'Nanum Gothic', sans-serif;
     font-weight: normal;
     font-style: normal;
   }
@@ -10,7 +9,7 @@
   }
   
   body * {
-    font-family: Goyang;
+    font-family: 'Nanum Gothic', sans-serif;
   }
   
   *,
