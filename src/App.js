@@ -81,13 +81,12 @@ export default class App {
       $target,
       initialData: JSON.parse(savedCats),
       onClick: async(image) => {
-        loadingToggle()
+        this.imageInfo.setState({})
           const catInfo = await api.fetchCatInfo(image.id)
           this.imageInfo.setState({
             visible: true,
             catInfo : catInfo.data
           })
-          this.setState(this.data)
         },
     });
 

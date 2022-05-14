@@ -10,8 +10,7 @@
   }
   
   body {
-    height:100%;
-    margin:0;
+    margin: 0;
     background-color:#fdfdf7;
   }
   
@@ -29,8 +28,9 @@
     font-weight:bold;
   }
 
-  .Header img:last-child{
-    height:300px;
+  .Header img{
+    max-width: 300px;
+    height: auto;
     cursor:pointer;
   }
 
@@ -46,7 +46,7 @@
   }
   
   #App {
-    margin: 1.5em auto;
+    margin: 0 auto;
     max-width: 1200px;
     column-gap: 1.5em;
     border: 50px solid transparent;
@@ -60,7 +60,6 @@
 
   .SearchSection{
     width:100%;
-    width:100%;
     background-color:#f9f8e6;;
     border-bottom: 1px solid #ff8b8b;
   }
@@ -71,7 +70,7 @@
   
   .SearchInput {
     width: 100%;
-    font-size: 48px;
+    font-size: 3.5vh;
     font-weight:bold;
     padding: 10px;
     text-align:center;
@@ -169,7 +168,6 @@
     background-color:#fdfdf7;
     padding:30px;
     text-align:center;
-    min-height:600px;
   }
   
   .SearchResult img {
@@ -184,7 +182,6 @@
   }
   
   .SearchResult .item {
-    background-color: #eee;
     display: inline-block;
     margin: 0 0 1em;
     width: 100%;
@@ -283,12 +280,43 @@
       transform: rotate(360deg);
     }
   }
+
+
+
   @media screen and (max-width:768px){
     .ImageInfo .content-wrapper{
       width:95%;
     }
   }
-  
+
+  @media screen and (max-width:415px){
+      .SearchResult{
+        display:flex !important;
+        flex-direction:column !important;
+    }
+    #App{
+      border-width : 15px 0px 0px 0px;
+      border-color: #ff8b8b;
+      border-radius: 0;
+      box-shadow:none;
+    }
+    .RandomButton{
+      right:20px;
+      bottom:20px;
+      width:60px;
+      height:70px;
+    }
+
+    .RandomButton:after{
+      content:'click me!'
+    }
+
+    .RandomButton img, span{
+      display:none;
+    }
+
+
+  }
   /* dark mode 처리
   @media (prefers-color-scheme: dark) {
     body {
@@ -300,3 +328,33 @@
   
 
 // 반응형 처리
+.RandomButton{
+  position:fixed;
+  right:50px;;
+  bottom:50px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  cursor:pointer;
+  background-color:#f9f8e6;
+  border: 1px solid rgba(255, 139, 139, 0.4);
+  box-shadow: rgba(255, 139, 139, 0.4) 5px 5px, rgba(255, 139, 139, 0.3) 10px 10px, rgba(255, 139, 139, 0.2) 15px 15px, rgba(255, 139, 139, 0.1) 20px 20px, rgba(255, 139, 139, 0.05) 25px 25px;
+}
+
+.RandomButton img{
+  position:fixed;
+  right:47px;;
+  bottom:47px;
+  width:120px;
+  border-radius:50%;
+}
+
+.RandomButton span{
+  position:fixed;
+  bottom:175px;
+  right:70px;
+  font-size:24px;
+  font-weight:bold;
+  color:#2e2e2e;
+  opacity:0.9;
+}
