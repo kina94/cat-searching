@@ -39,25 +39,30 @@ export default class ImageInfo {
     }
   
     render() {
-      if (this.data.visible) {
-        const { name, url, temperament, origin } = this.data.catInfo;
-  
-        this.$imageInfo.innerHTML = `
-          <div class="content-wrapper">
-            <div class="title">
-              <span>${name}</span>
-              <div class="close">x</div>
-            </div>
-            <img src="${url}" alt="${name}"/>        
-            <div class="description">
-              <div>성격: ${temperament}</div>
-              <div>태생: ${origin}</div>
-            </div>
-          </div>`;
-        this.$imageInfo.style.display = "block";
+      if(this.data.isLoading){
+        this.$imageInfo.innerHTML='Loading...'
       } else {
-        this.$imageInfo.style.display = "none";
+        if (this.data.visible) {
+          const { name, url, temperament, origin } = this.data.catInfo;
+    
+          this.$imageInfo.innerHTML = `
+            <div class="content-wrapper">
+              <div class="title">
+                <span>${name}</span>
+                <div class="close">x</div>
+              </div>
+              <img src="${url}" alt="${name}"/>        
+              <div class="description">
+                <div>성격: ${temperament}</div>
+                <div>태생: ${origin}</div>
+              </div>
+            </div>`;
+          this.$imageInfo.style.display = "block";
+        } else {
+          this.$imageInfo.style.display = "none";
+        }
       }
+
 
       this.handleModalClose()
     }

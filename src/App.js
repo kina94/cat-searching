@@ -15,17 +15,17 @@ export default class App {
     this.searchInput = new SearchInput({
       $target,
       onSearch: async(keyword) => {
-        const cats = await api.fetchCats(keyword)
         this.searchResult.setState({
           isLoading:true,
         })
+        const cats = await api.fetchCats(keyword)
         this.setState(cats.data)
       },
       onClick: async() => {
-        const cats = await api.randomFetchCats()
         this.searchResult.setState({
           isLoading:true,
         })
+        const cats = await api.randomFetchCats()
         this.setState(cats.data)
       }
     });
@@ -34,12 +34,15 @@ export default class App {
       $target,
       initialData: this.data,
       onClick: async(image) => {
+        this.searchResult.setState({
+          isLoading:true,
+        })
         const catInfo = await api.fetchCatInfo(image.id)
         this.imageInfo.setState({
-          isLoading:false,
           visible: true,
           catInfo : catInfo.data
-        });
+        })
+        this.searchResult.setState(this.data)
       }
     });
 
