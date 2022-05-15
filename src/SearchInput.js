@@ -22,7 +22,7 @@ export default class SearchInput {
     this.$searchSection.innerHTML =
       `
     <div class='Search'>
-    <input class='SearchInput' type='text' placeholder='고양이 종류를 검색해보세요🐱' autofocus/>
+    <input class='SearchInput' type='text' placeholder='고양이 종류를 입력하고 엔터를 눌러보세요🐱' autofocus/>
     <button class='RandomButton'>
     <span>Click me!</span>
     <img src='./assets/sad-cat.png'>
@@ -47,9 +47,14 @@ export default class SearchInput {
     })
 
     this.$searchSection.querySelector('.SearchInput').addEventListener("keyup", e => {
-      if (e.keyCode === 13) {
-        this.onSearch(e.target.value);
-        searchHistory.setState(this.searchKeyword)
+      if (e.key === 'Enter') {
+        if(!e.target.value){
+          window.alert('검색어를 입력해주세요.')
+        } else{
+          this.onSearch(e.target.value);
+          searchHistory.setState(this.searchKeyword)
+        }
+
       }
     });
 
