@@ -10,9 +10,9 @@ export default class DarkMode {
     toggleMode (){
         if (document.body.dataset.theme === undefined) {
             if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                document.body.dataset.theme= 'dark'
-            } else {
                 document.body.dataset.theme= 'light'
+            } else {
+                document.body.dataset.theme= 'dark'
             }
           } else {
             document.body.dataset.theme= document.body.dataset.theme==='dark' ? 'light' : 'dark'
