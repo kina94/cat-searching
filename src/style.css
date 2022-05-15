@@ -43,7 +43,6 @@
     --font-color: #2e2e2e;
     --mode-button-color: #0f0f0f;
     --mode-button-icon: #ffffff;
-    animation : fadein 1s forwards;
 
   }
   body[data-theme="dark"] {
@@ -52,7 +51,6 @@
     --font-color:white;
     --mode-button-color:white;
     --mode-button-icon:#ff8b8b;
-    animation : fadein 1s forwards;
   }
 
   .Header{
