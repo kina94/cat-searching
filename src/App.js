@@ -3,6 +3,7 @@ import SearchResult from './SearchResult.js'
 import ImageInfo from './ImageInfo.js'
 import Header from './Header.js'
 import {api} from './api.js'
+import Loading from './Loading.js'
 
 console.log("app is running!");
 export default class App {
@@ -15,11 +16,8 @@ export default class App {
     const savedCats = localStorage.getItem('cats')
     let searchKeyword = savedHistory ? JSON.parse(savedHistory) : []
 
-    //로딩창 토글
     const loadingToggle = () =>{
-      this.setState({
-        isLoading:true
-      })
+      this.Loading.setState(this.Loading.state ? false : true)
     }
 
     //키보드로 서치할 때마다 검색 기록을 추가하고 로컬스토리지에 저장
@@ -44,6 +42,7 @@ export default class App {
       }
       this.setState(res.data)
       localStorage.setItem('cats', JSON.stringify(res.data))
+      loadingToggle()
     }
 
     this.header = new Header({
@@ -52,6 +51,7 @@ export default class App {
         loadingToggle()
         const catGif = await api.theCatApi()
         this.setState(catGif[0])
+        loadingToggle()
       }
     })
 
@@ -81,12 +81,14 @@ export default class App {
       $target,
       initialData: JSON.parse(savedCats),
       onClick: async(image) => {
+        loadingToggle()
         this.imageInfo.setState({})
           const catInfo = await api.fetchCatInfo(image.id)
           this.imageInfo.setState({
             visible: true,
             catInfo : catInfo.data
           })
+          loadingToggle()
         },
     });
 
@@ -103,6 +105,11 @@ export default class App {
         })
       }
     });
+
+    this.Loading = new Loading({
+      $target,
+      state : false
+    })
 
     
   }

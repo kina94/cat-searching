@@ -25,15 +25,7 @@ export default class SearchResult {
     if (this.data === null) {
       this.$searchResult.style.display='none';
     } else {
-      this.$searchResult.style.display='grid';
-      if (this.data.isLoading) {
-        this.$searchResult.innerHTML =
-          `<div class='Loading'>
-        <div class='LoadingSpinner'></div>
-        <p class='LoadingMessage'>Loading...</p>
-        </div>
-        `
-      } else {
+        this.$searchResult.style.display='grid';
         this.$searchResult.innerHTML =
           this.data.length > 1 ?
             this.data.map(
@@ -51,7 +43,6 @@ export default class SearchResult {
               `<p>검색 결과가 없습니다.</p>`
             }
              </div>`
-      }
     }
 
     // this.$searchResult.addEventListener('click', (e) => {
