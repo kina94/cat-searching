@@ -27,6 +27,14 @@
     box-sizing: inherit;
   }
 
+  :root{
+    --background-color: #fdfdf7;
+    --header-color: #f9f8e6;
+    --font-color: #2e2e2e;
+    --mode-button-color: #0f0f0f;
+    --mode-button-icon: #ffffff;
+  }
+
   @media (prefers-color-scheme: dark){
     :root{
       --background-color:#212121;
