@@ -1,18 +1,24 @@
-@font-face {
-    font-weight: normal;
-    font-style: normal;
-  }
    *{
     font-family: 'Stylish', sans-serif;
    }
-  
-  html {
+
+   /* :root {
+    --background-color: #fdfdf7;
+    --header-color: #f9f8e6;
+    --font-color: #2e2e2e;
+    --mode-button-color: #0f0f0f;
+    --mode-button-icon: #ffffff;
   }
-  
+   */
   body {
     margin-top:20px;
     margin-bottom:20px;
-    background-color:#fdfdf7;
+    background-color:var(--background-color);
+    --duration: 0.5s;
+    --timing: ease;
+    transition:
+    color var(--duration) var(--timing),
+    background-color var(--duration) var(--timing);
   }
   
   *,
@@ -21,11 +27,38 @@
     box-sizing: inherit;
   }
 
+  @media (prefers-color-scheme: dark){
+    :root{
+      --background-color:#212121;
+      --header-color:#0f0f0f;
+      --font-color:white;
+      --mode-button-color:white;
+      --mode-button-icon:#ff8b8b;
+    }
+  }
+
+  body[data-theme="light"] {
+    --background-color: #fdfdf7;
+    --header-color: #f9f8e6;
+    --font-color: #2e2e2e;
+    --mode-button-color: #0f0f0f;
+    --mode-button-icon: #ffffff;
+    animation : fadein 1s forwards;
+
+  }
+  body[data-theme="dark"] {
+    --background-color:#212121;
+    --header-color:#0f0f0f;
+    --font-color:white;
+    --mode-button-color:white;
+    --mode-button-icon:#ff8b8b;
+    animation : fadein 1s forwards;
+  }
+
   .Header{
     text-align:center;
     font-size:24px;
-    background-color:#f9f8e6;
-    color:#f9f8e6;
+    background-color:var(--header-color);
     font-weight:bold;
   }
 
@@ -40,7 +73,7 @@
   }
 
   .Header p{
-    color:#2e2e2e;
+    color:var(--font-color);
     position:absolute;
     left:50%;
     opacity:0.85;
@@ -61,7 +94,7 @@
 
   .SearchSection{
     width:100%;
-    background-color:#f9f8e6;;
+    background-color:var(--header-color);;
     border-bottom: 1px solid #ff8b8b;
   }
 
@@ -78,8 +111,7 @@
     color: #ff8b8b;
     padding:30px;
     border:none;
-    background-color:#fdfdf7;
-    opacity:0.9;
+    background-color:var(--background-color);
   }
 
   .SearchInput::placeholder{
@@ -143,13 +175,14 @@
 
   .RandomButton{
     position:fixed;
+    z-index:3;
     right:50px;;
     bottom:50px;
     width:120px;
     height:120px;
     border-radius:50%;
     cursor:pointer;
-    background-color:#f9f8e6;
+    background-color:var(--header-color);
     border: 1px solid rgba(255, 139, 139, 0.4);
     box-shadow: rgba(255, 139, 139, 0.4) 5px 5px, rgba(255, 139, 139, 0.3) 10px 10px, rgba(255, 139, 139, 0.2) 15px 15px, rgba(255, 139, 139, 0.1) 20px 20px, rgba(255, 139, 139, 0.05) 25px 25px;
   }
@@ -168,7 +201,7 @@
     right:70px;
     font-size:24px;
     font-weight:bold;
-    color:#2e2e2e;
+    color:var(--font-color);
     opacity:0.9;
   }
 
@@ -176,7 +209,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
-    background-color:#fdfdf7;
+    background-color:var(--background-color);
     padding:30px;
     text-align:center;
   }
@@ -228,7 +261,7 @@
     border-top: 2em solid rgba(255,139,139, 0.8);
     border-right: 2em solid rgba(255,139,139, 0.8);
     border-bottom: 2em solid rgba(255,139,139, 0.8);
-    border-left: 2em solid #fdfdf7;
+    border-left: 2em solid var(--background-color);
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
@@ -286,6 +319,34 @@
   .ImageInfo .content-wrapper img {
     width: 100%;
   }
+
+  .mode-button-wrapper{
+    z-index: 1;
+    position: fixed;
+    top:1.3%;
+    left: 0;
+    width: 100px;
+    height: 70px;
+    background-color: var(--mode-button-color);
+    border-radius: 0 10em 10em 0;;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    cursor:pointer;
+    font-size: 48px;
+    color:var(--mode-button-icon);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+    
+
+  .mode-button{
+    display:none;
+  }
+
+.label i{
+  cursor:pointer;
+}
+ 
 
   @keyframes fadein {
     from {
@@ -369,11 +430,4 @@
     }
 
   }
-  /* dark mode 처리
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #000;
-      color: white;
-    }
-  }
-  */
+

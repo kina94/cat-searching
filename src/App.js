@@ -4,6 +4,7 @@ import ImageInfo from './ImageInfo.js'
 import Header from './Header.js'
 import {api} from './api.js'
 import Loading from './Loading.js'
+import DarkMode from './DarkMode.js'
 
 console.log("app is running!");
 export default class App {
@@ -12,6 +13,9 @@ export default class App {
 
   constructor($target) {
     this.$target = $target;
+    this.darkMode = new DarkMode({$target})
+    this.Loading = new Loading({$target, state : false})
+
     const savedHistory = localStorage.getItem('search')
     const savedCats = localStorage.getItem('cats')
     let searchKeyword = savedHistory ? JSON.parse(savedHistory) : []
@@ -44,6 +48,7 @@ export default class App {
       localStorage.setItem('cats', JSON.stringify(res.data))
       loadingToggle()
     }
+
 
     this.header = new Header({
       $target,
@@ -105,11 +110,6 @@ export default class App {
         })
       }
     });
-
-    this.Loading = new Loading({
-      $target,
-      state : false
-    })
 
     
   }
