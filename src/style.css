@@ -320,6 +320,9 @@
       display:none;
     }
 
+    .SearchHistory{
+      display:none;
+    }
 
   }
   /* dark mode 처리

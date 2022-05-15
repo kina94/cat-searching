@@ -46,9 +46,13 @@ export default class SearchResult {
             )
               .join("") :
             `<div>
-              <img class='CatGif' src='${this.data.url}'/>
+            ${
+              this.data.url ? `<img class='CatGif' src='${this.data.url}'/>` :
+              `<p>검색 결과가 없습니다.</p>`
+            }
              </div>`
       }
+      console.log(this.data.url)
     }
 
     // this.$searchResult.addEventListener('click', (e) => {
