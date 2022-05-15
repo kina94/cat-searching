@@ -11,7 +11,7 @@ export default class SearchResult {
   render() {
     this.$header.innerHTML =
     `
-    <p style="Random">Click me!</p>
+    <p style="Random">Random GIF?</br>👇Click me!</p>
     <img class="Home" src="./assets/cat.png">`
     
     this.$header.addEventListener('click', (e)=>{
