@@ -22,7 +22,7 @@ export default class SearchInput {
     this.$searchSection.innerHTML =
       `
     <div class='Search'>
-    <input class='SearchInput' type='text' placeholder='고양이 종류를 입력하고 엔터를 눌러보세요🐱' autofocus/>
+    <input class='SearchInput' type='text' placeholder='고양이를 검색해보세요🐱' autofocus/>
     <button class='RandomButton'>
     <span>Click me!</span>
     <img src='./assets/sad-cat.png'>

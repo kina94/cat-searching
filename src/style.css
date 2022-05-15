@@ -122,6 +122,7 @@
 
   .SearchInput::placeholder{
     color: #ff8b8b;
+    font-size: 3.5vh;
   }
   
   .SearchInput:focus{
