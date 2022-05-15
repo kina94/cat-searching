@@ -218,6 +218,7 @@
     background-color:var(--background-color);
     padding:30px;
     text-align:center;
+    color: var(--font-color);
   }
   
   .SearchResult img {
