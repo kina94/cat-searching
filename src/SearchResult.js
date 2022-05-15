@@ -52,7 +52,6 @@ export default class SearchResult {
             }
              </div>`
       }
-      console.log(this.data.url)
     }
 
     // this.$searchResult.addEventListener('click', (e) => {

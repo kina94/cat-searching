@@ -99,6 +99,7 @@
 
   .SearchHistory li{
     display:flex;
+    padding: 0 10px 0 10px;
     width:150px;
     height:50px;
     background-color:white;
@@ -113,14 +114,22 @@
     transition: all 50ms ease-in;
   }
 
-  .SearchHistory li span{
+  .SearchHistory .keyword{
+    width:90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .SearchHistory .delete{
     font-size:18px;
     margin-left: 10px;
     cursor:pointer;
     transition: all 100ms ease-in;
+    
   }
 
-  .SearchHistory li span:hover{
+  .SearchHistory .delete:hover{
     transform : scale(1.3);
   }
 

@@ -22,9 +22,11 @@ export default class SearchHistory {
                 `
         <ul>
         ${this.data.map(history => {
-                    return `<li id=${history}>${history}
-                    <span class='delete'>❌</span>
-                    </li>`
+                    return `<li id=${history}>
+                    <div class='keyword'>${history}</div>
+                    <div class='delete'>❌</div>
+                    </li>
+                    `
                 }).join('')
                 }
         </ul>
