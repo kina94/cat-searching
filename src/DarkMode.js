@@ -7,7 +7,7 @@ export default class DarkMode {
         this.render()
     }
 
-    toggleMode (){
+    handleToggleButton (){
         if (document.body.dataset.theme === undefined) {
             if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
                 document.body.dataset.theme= 'light'
@@ -27,7 +27,7 @@ export default class DarkMode {
         `
 
         this.$template.addEventListener('click', (e)=>{
-            e.target.closest('div') && this.toggleMode()
+            e.target.closest('div') && this.handleToggleButton()
         })
     }
 }
