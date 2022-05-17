@@ -42,9 +42,13 @@ export default class SearchInput {
       })
   
       this.$searchSection.addEventListener('click', (e)=>{
-        const catId = e.target.closest('li').id
-        if(catId){
-          this.onHistoryClick(catId)
+        try{
+          const catId = e.target.closest('li').id
+          if(catId){
+            this.onHistoryClick(catId)
+          }
+        }catch{
+          return
         }
       })
     }
