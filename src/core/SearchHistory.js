@@ -1,11 +1,11 @@
 export default class SearchHistory {
     data = null
-    constructor({ $target, data }) {
+    constructor({ $target, data, onClick }) {
         this.$target = $target
         this.data = data
-        const $searchHistory = document.createElement('div')
+        const $searchHistory = document.createElement('section')
         this.$searchHistory = $searchHistory
-        $searchHistory.className = 'SearchHistory'
+        $searchHistory.className = 'search-history'
         $target.appendChild($searchHistory)
 
         this.render()
@@ -17,14 +17,14 @@ export default class SearchHistory {
     }
 
     render() {
-        if (this.data!=null) {
+        if (this.data != null) {
             this.$searchHistory.innerHTML =
                 `
         <ul>
-        ${this.data.map(history => {
-                    return `<li id=${history}>
-                    <div class='keyword'>${history}</div>
-                    <div class='delete'>❌</div>
+        ${this.data.map((history,index) => {
+                    return `<li id=${index}>
+                    <div class='history-keyword'>${history}</div>
+                    <button class='history-delete-button'>❌</button>
                     </li>
                     `
                 }).join('')

@@ -1,15 +1,7 @@
    *{
     font-family: 'Stylish', sans-serif;
    }
-
-   /* :root {
-    --background-color: #fdfdf7;
-    --header-color: #f9f8e6;
-    --font-color: #2e2e2e;
-    --mode-button-color: #0f0f0f;
-    --mode-button-icon: #ffffff;
-  }
-   */
+   
   body {
     margin-top:20px;
     margin-bottom:20px;
@@ -35,6 +27,7 @@
     --mode-button-icon: #ffffff;
   }
 
+  /*다크모드 - 라이트모드*/
   @media (prefers-color-scheme: dark){
     :root{
       --background-color:#212121;
@@ -61,30 +54,32 @@
     --mode-button-icon:#ff8b8b;
   }
 
-  .Header{
+  /*헤더*/
+  header {
     text-align:center;
     font-size:24px;
     background-color:var(--header-color);
     font-weight:bold;
   }
 
-  .Header img{
+  header img{
     max-width: 300px;
     height: auto;
     cursor:pointer;
   }
 
-  .Header img:hover{
+  header img:hover{
     transform:scale(1.04)
   }
 
-  .Header p{
+  header p{
     color:var(--font-color);
     position:absolute;
     left:50%;
     opacity:0.85;
   }
   
+  /*메인화면*/
   #App {
     margin: 0 auto;
     max-width: 1200px;
@@ -98,17 +93,17 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;  
   }
 
-  .SearchSection{
+  .search-section{
     width:100%;
     background-color:var(--header-color);;
     border-bottom: 1px solid #ff8b8b;
   }
 
-  .SearchSection .Search{
+  .search-section .search{
     display:flex;
   }
   
-  .SearchInput {
+  .search-input {
     width: 100%;
     font-size: 3.5vh;
     font-weight:bold;
@@ -120,23 +115,23 @@
     background-color:var(--background-color);
   }
 
-  .SearchInput::placeholder{
+  .search-input::placeholder{
     color: #ff8b8b;
     font-size: 3.5vh;
   }
   
-  .SearchInput:focus{
+  .search-input:focus{
     outline:none;
   }
 
-  .SearchHistory ul{
+  .search-history ul{
     padding: 0 10px 0 10px;
     list-style:none;
     display:flex;
     justify-content:center;
   }
 
-  .SearchHistory li{
+  .search-history li{
     display:flex;
     padding: 0 10px 0 10px;
     width:150px;
@@ -153,14 +148,19 @@
     transition: all 50ms ease-in;
   }
 
-  .SearchHistory .keyword{
+  .search-history .history-keyword{
+    display:flex;
+    align-items:center;
     width:90%;
+    height:100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .SearchHistory .delete{
+  .search-history .history-delete-button{
+    border: none;
+    background-color:transparent;
     font-size:18px;
     margin-left: 10px;
     cursor:pointer;
@@ -168,19 +168,19 @@
     
   }
 
-  .SearchHistory .delete:hover{
+  .search-history .history-delete-button:hover{
     transform : scale(1.3);
   }
 
-  .SearchHistory li:hover{
+  .search-history li:hover{
     transform : scale(1.05);
   }
 
-  .SearchHistory li:first-child{
+  .search-history li:first-child{
     margin-left:0;
   }
 
-  .RandomButton{
+  .random-button{
     position:fixed;
     z-index:3;
     right:50px;;
@@ -195,7 +195,7 @@
     color:var(--font-color);
   }
 
-  .RandomButton img{
+  .random-button img{
     position:fixed;
     right:47px;;
     bottom:47px;
@@ -203,7 +203,7 @@
     border-radius:50%;
   }
 
-  .RandomButton span{
+  .random-button span{
     position:fixed;
     bottom:175px;
     right:70px;
@@ -213,7 +213,7 @@
     opacity:0.9;
   }
 
-  .SearchResult {
+  .search-result {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
@@ -223,7 +223,7 @@
     color: var(--font-color);
   }
   
-  .SearchResult img {
+  .search-result img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -234,14 +234,14 @@
     object-fit: contain !important;
   }
   
-  .SearchResult .item {
+  .search-result .item {
     display: inline-block;
     margin: 0 0 1em;
     width: 100%;
     cursor:pointer;
   }
 
-  .SearchResult .item:hover {
+  .search-result .item:hover {
     opacity:0.8
   }
 
@@ -409,7 +409,7 @@
     body{
       margin:0
     }
-      .SearchResult{
+      .search-result{
         display:flex !important;
         flex-direction:column !important;
     }
@@ -419,22 +419,22 @@
       border-radius: 0;
       box-shadow:none;
     }
-    .RandomButton{
+    .random-button{
       right:20px;
       bottom:20px;
       width:60px;
       height:70px;
     }
 
-    .RandomButton:after{
+    .random-button:after{
       content:'click me!'
     }
 
-    .RandomButton img, span{
+    .random-button img, span{
       display:none;
     }
 
-    .SearchHistory{
+    .search-history{
       display:none;
     }
 

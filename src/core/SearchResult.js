@@ -6,7 +6,7 @@ export default class SearchResult {
 
   constructor({ $target, initialData, onClick }) {
     this.$searchResult = document.createElement("section");
-    this.$searchResult.className = "SearchResult";
+    this.$searchResult.className = "search-result";
     $target.appendChild(this.$searchResult);
 
     this.data = initialData;
@@ -37,7 +37,7 @@ export default class SearchResult {
             `).join("") :
             `<div>
             ${
-              this.data.url ? `<img class='CatGif' src='${this.data.url}'/>` :
+              this.data.url ? `<img src='${this.data.url}'/>` :
               `<p>검색 결과가 없습니다.</p>`
             }
              </div>`

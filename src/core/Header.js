@@ -1,7 +1,6 @@
 export default class SearchResult {
   constructor({ $target, onClick }) {
     this.$header = document.createElement("header");
-    this.$header.className = "Header";
     $target.appendChild(this.$header);
     this.onClick = onClick;
 
@@ -11,11 +10,11 @@ export default class SearchResult {
   render() {
     this.$header.innerHTML =
     `
-    <p style="Random">Random GIF?</br>👇Click me!</p>
-    <img class="Home" src="./src/assets/cat.png">`
+    <p>Random GIF?</br>👇Click me!</p>
+    <img class="random-gif" src="./src/assets/cat.png">`
     
     this.$header.addEventListener('click', (e)=>{
-        if(e.target.className === 'Home'){
+        if(e.target.className === 'random-gif'){
             this.onClick()
         }
     })
