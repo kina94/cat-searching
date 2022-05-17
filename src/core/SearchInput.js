@@ -32,7 +32,7 @@ export default class SearchInput {
     })
 
     const addSearchKeyword = (keyword) => {
-      if(this.searchKeyword.includes(keyword)){
+      if (this.searchKeyword.includes(keyword)) {
         return
       } else {
         if (this.searchKeyword.length > 4) {
@@ -50,26 +50,34 @@ export default class SearchInput {
       this.$searchSection.addEventListener('click', e => {
         try {
           const targetName = e.target.className
-          switch (targetName){
-            case 'random-button' || 'random-button-img':
+          switch (targetName) {
+            case 'random-button':
               this.onSearch(null, true)
-            
+              break
+
+            case 'random-button-img':
+              this.onSearch(null, true)
+              break
+
             case 'history-keyword':
               const keyword = e.target.value
               this.onSearch(keyword, false)
-            
+              break
+
             case 'history-delete-button':
               const catId = e.target.closest('li').id
-              this.searchKeyword.splice(catId,1)
+              this.searchKeyword.splice(catId, 1)
               localStorage.setItem('search', JSON.stringify(this.searchKeyword))
               searchHistory.setState(this.searchKeyword)
+              break
 
             case 'search-input':
               if (e.target.value) {
                 e.target.value = ''
               }
+              break
           }
-        } catch{
+        } catch {
           return
         }
       })
