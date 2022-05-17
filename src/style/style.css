@@ -93,6 +93,7 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;  
   }
 
+  /*검색창*/
   .search-section{
     width:100%;
     background-color:var(--header-color);;
@@ -102,7 +103,7 @@
   .search-section .search{
     display:flex;
   }
-  
+ 
   .search-input {
     width: 100%;
     font-size: 3.5vh;
@@ -124,6 +125,7 @@
     outline:none;
   }
 
+  /*검색 기록*/
   .search-history ul{
     padding: 0 10px 0 10px;
     list-style:none;
@@ -180,6 +182,7 @@
     margin-left:0;
   }
 
+/*고양이 랜덤 사진 버튼*/
   .random-button{
     position:fixed;
     z-index:3;
@@ -213,6 +216,7 @@
     opacity:0.9;
   }
 
+  /*검색결과*/
   .search-result {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -230,10 +234,10 @@
     border-radius:5px;
   }
 
-  .CatGif{
+  .cat-gif{
     object-fit: contain !important;
   }
-  
+
   .search-result .item {
     display: inline-block;
     margin: 0 0 1em;
@@ -245,6 +249,7 @@
     opacity:0.8
   }
 
+  /*로딩창*/
   .Loading{
     z-index: 3;
     position: fixed;
@@ -290,6 +295,7 @@
   }
   
 
+  /*모달창*/
   .image-info {
     animation : fadein 1s forwards;
     position: fixed;
@@ -344,6 +350,7 @@
     width: 100%;
   }
 
+  /*다크모드 토글 버튼*/
   .mode-button-wrapper{
     z-index: 1;
     position: fixed;
@@ -362,7 +369,6 @@
     align-items:center;
   }
     
-
   .mode-button{
     display:none;
   }
@@ -372,6 +378,7 @@
 }
  
 
+/*애니메이션*/
   @keyframes fadein {
     from {
       opacity: 0;
@@ -413,7 +420,7 @@
   }
 
 
-
+/*반응형*/
   @media screen and (max-width:768px){
     .image-info .content-wrapper{
       width:95%;
