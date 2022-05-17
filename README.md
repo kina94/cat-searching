@@ -1,5 +1,5 @@
 <div align="center">
-  <h1> 📷 프로그래머스 고양이 사진 검색 사이트 (Vainlia JS) </h1>
+  <h1> 😺 프로그래머스 고양이 사진 검색 사이트 (Vainlia JS) </h1>
   
 본 레포에는 <a href='https://programmers.co.kr/skill_check_assignments/4'>2020 Dev-Matching: 웹 프론트엔드 개발자(상반기)' 고양이 사진 검색 사이트</a> </br>
 문제 풀이 후 복기하고 업데이트한 결과물을 담았습니다.</br>
