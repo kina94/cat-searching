@@ -12,7 +12,7 @@ export default class SearchResult {
     this.$header.innerHTML =
     `
     <p style="Random">Random GIF?</br>👇Click me!</p>
-    <img class="Home" src="./assets/cat.png">`
+    <img class="Home" src="./src/assets/cat.png">`
     
     this.$header.addEventListener('click', (e)=>{
         if(e.target.className === 'Home'){

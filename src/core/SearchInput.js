@@ -25,7 +25,7 @@ export default class SearchInput {
     <input class='SearchInput' type='text' placeholder='고양이를 검색해보세요🐱' autofocus/>
     <button class='RandomButton'>
     <span>Click me!</span>
-    <img src='./assets/sad-cat.png'>
+    <img src='./src/assets/sad-cat.png'>
     </button>
     </div>
     `

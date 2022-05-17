@@ -1,10 +1,10 @@
-import SearchInput from './SearchInput.js'
-import SearchResult from './SearchResult.js'
-import ImageInfo from './ImageInfo.js'
-import Header from './Header.js'
-import {api} from './api.js'
-import Loading from './Loading.js'
-import DarkMode from './DarkMode.js'
+import SearchInput from './core/SearchInput.js'
+import SearchResult from './core/SearchResult.js'
+import ImageInfo from './core/ImageInfo.js'
+import Header from './core/Header.js'
+import {api} from './service/api.js'
+import Loading from './utils/Loading.js'
+import DarkMode from './utils/DarkMode.js'
 
 console.log("app is running!");
 export default class App {
