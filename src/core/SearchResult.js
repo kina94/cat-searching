@@ -34,9 +34,7 @@ export default class SearchResult {
                 <img src=${cat.url} title=${cat.name} loading='lazy' alt=${cat.name}
                 width='200' height='200'>
               </div>
-            `
-            )
-              .join("") :
+            `).join("") :
             `<div>
             ${
               this.data.url ? `<img class='CatGif' src='${this.data.url}'/>` :
@@ -45,18 +43,16 @@ export default class SearchResult {
              </div>`
     }
 
-    // this.$searchResult.addEventListener('click', (e) => {
-    //   const itemId = e.target.parentNode.id
-    //   if(itemId!=undefined){
-    //     this.onClick(this.data[itemId])
-    //   }
-    // })
+    this.$searchResult.addEventListener('click', (e) => {
+      try{
+        const itemId = e.target.closest('div').id
+        if(itemId){
+          this.onClick(this.data[itemId])
+        }
+      }catch{
+        return
+      }
+    })
 
-
-    this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
-      $item.addEventListener("click", () => {
-        this.onClick(this.data[index]);
-      });
-    });
   }
 }
