@@ -23,7 +23,7 @@ export default class ImageInfo {
     handleModalClose() {
       this.$imageInfo.addEventListener('click', (e)=>{
         try{
-          if(e.target.className==='ImageInfo' || e.target.className==='close'){
+          if(e.target.className==='image-info' || e.target.className==='close'){
             this.modalClose()
           }
         } catch(e){
