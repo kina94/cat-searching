@@ -21,7 +21,7 @@ export default class SearchInput {
     <input class='search-input' type='text' placeholder='고양이를 검색해보세요🐱' autofocus/>
     <button class='random-button'>
     <span>Click me!</span>
-    <img src='./src/assets/sad-cat.png'>
+    <img class='random-button-img' src='./src/assets/sad-cat.png'>
     </button>
     </section>
     `
@@ -50,24 +50,24 @@ export default class SearchInput {
       this.$searchSection.addEventListener('click', e => {
         try {
           const targetName = e.target.className
+          switch (targetName){
+            case 'random-button' || 'random-button-img':
+              this.onSearch(null, true)
+            
+            case 'history-keyword':
+              const keyword = e.target.value
+              this.onSearch(keyword, false)
+            
+            case 'history-delete-button':
+              const catId = e.target.closest('li').id
+              this.searchKeyword.splice(catId,1)
+              localStorage.setItem('search', JSON.stringify(this.searchKeyword))
+              searchHistory.setState(this.searchKeyword)
 
-          if (targetName === 'random-button') { // 랜덤 고양이 버튼 클릭
-            this.onSearch(null, true)
-          }
-          if (targetName === 'history-keyword'){ // 검색어 기록 클릭
-            const keyword = e.target.value
-            this.onSearch(keyword, false)
-          }
-          if (targetName === 'history-delete-button'){ // 검색어 기록 삭제 클릭
-            const catId = e.target.closest('li').id
-            this.searchKeyword.splice(catId,1)
-            localStorage.setItem('search', JSON.stringify(this.searchKeyword))
-            searchHistory.setState(this.searchKeyword)
-          }
-          if (targetName === 'search-input') { // 인풋 버튼 클릭
-            if (e.target.value) {
-              e.target.value = ''
-            }
+            case 'search-input':
+              if (e.target.value) {
+                e.target.value = ''
+              }
           }
         } catch{
           return
