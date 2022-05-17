@@ -48,7 +48,7 @@ export default class ImageInfo {
           this.$imageInfo.innerHTML = `
             <div class="content-wrapper">
               <div class="title">
-                <span>${name}</span>
+                <span>${name.split('/')[0]}</span>
                 <div class="close">x</div>
               </div>
               <img src="${url}" alt="${name}"/>        
