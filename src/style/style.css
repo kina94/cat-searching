@@ -307,6 +307,8 @@
   .image-info .title {
     display: flex;
     justify-content: space-between;
+    font-size:2.5vh;
+    font-weight:bold;
   }
   
   .image-info .title,
@@ -320,9 +322,22 @@
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    border: 1px solid #eee;
+    border: 1px solid #ff8b8b;
     border-radius: 5px;
     font-size:1.5vh;
+    padding:0 15px 0px 15px;
+    background-color:var(--background-color);
+    color: var(--font-color);
+  }
+
+  .image-info .content-wrapper figure{
+    margin:0;
+  }
+
+  .image-info .content-wrapper button{
+    background-color:transparent;
+    border:none;
+    cursor:pointer;
   }
   
   .image-info .content-wrapper img {
@@ -430,7 +445,7 @@
       content:'click me!'
     }
 
-    .random-button img, span{
+    .random-button img, .random-button span{
       display:none;
     }
 
