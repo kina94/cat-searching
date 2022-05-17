@@ -33,39 +33,49 @@ export default class SearchInput {
     const searchHistory = new SearchHistory({$target: this.$searchSection,
       data: this.searchKeyword})
 
-    this.$searchSection.addEventListener('click', (e)=>{
-      if(e.target.className === 'delete'){
-        this.onHistoryDeleteClick(e.target.closest('li').id)
-        searchHistory.setState(this.searchKeyword)
-      }
-    })
-
-    this.$searchSection.addEventListener('click', (e)=>{
-      if(this.searchKeyword.includes(e.target.id)){
-        this.onHistoryClick(e.target.id)
-      }
-    })
-
-    this.$searchSection.querySelector('.SearchInput').addEventListener("keyup", e => {
-      if (e.key === 'Enter') {
-        if(!e.target.value){
-          window.alert('검색어를 입력해주세요.')
-        } else{
-          this.onSearch(e.target.value);
+    const handleSearchHistory= () =>{
+      this.$searchSection.addEventListener('click', (e)=>{
+        if(e.target.className === 'delete'){
+          this.onHistoryDeleteClick(e.target.closest('li').id)
           searchHistory.setState(this.searchKeyword)
         }
+      })
+  
+      this.$searchSection.addEventListener('click', (e)=>{
+        const catId = e.target.closest('li').id
+        if(catId){
+          this.onHistoryClick(catId)
+        }
+      })
+    }
 
-      }
-    });
+    const handleSearchInptut = () =>{
+      this.$searchSection.querySelector('.SearchInput').addEventListener("keyup", e => {
+        if (e.key === 'Enter') {
+          if(!e.target.value){
+            window.alert('검색어를 입력해주세요.')
+          } else{
+            this.onSearch(e.target.value);
+            searchHistory.setState(this.searchKeyword)
+          }
+        }
+      });
+  
+      this.$searchSection.querySelector('.SearchInput').addEventListener('click', e => {
+        if(e.target.value){
+          e.target.value = ''
+        } 
+      })
+    }
 
-    this.$searchSection.querySelector('.SearchInput').addEventListener('click', e => {
-      if(e.target.value){
-        e.target.value = ''
-      } 
-    })
+    const handleRandomButton = () =>{
+      this.$searchSection.querySelector('.RandomButton').addEventListener('click', () =>{
+        this.onRandomClick()
+      })
+    }
 
-    this.$searchSection.querySelector('.RandomButton').addEventListener('click', () =>{
-      this.onRandomClick()
-    })
+    handleSearchInptut()
+    handleSearchHistory()
+    handleRandomButton()
   }
 }
