@@ -60,7 +60,7 @@ export default class SearchInput {
               break
 
             case 'history-keyword':
-              const keyword = e.target.value
+              const keyword = e.target.innerText
               this.onSearch(keyword, false)
               break
 
