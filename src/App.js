@@ -25,6 +25,7 @@ export default class App {
     //function
     const loadingToggle = () => {
       this.Loading.setState(this.Loading.state ? false : true)
+      document.querySelector('#App').style.pointerEvents = this.Loading.state ? 'none' : 'auto'
     }
 
     const handleSearch = async (keyword, isRandom) => {
