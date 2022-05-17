@@ -290,7 +290,7 @@
   }
   
 
-  .ImageInfo {
+  .image-info {
     animation : fadein 1s forwards;
     position: fixed;
     left: 0;
@@ -300,21 +300,21 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
   
-  .ImageInfo .invisible{
+  .image-info .invisible{
     animation : fadeout 0.01s forwards;
   }
   
-  .ImageInfo .title {
+  .image-info .title {
     display: flex;
     justify-content: space-between;
   }
   
-  .ImageInfo .title,
-  .ImageInfo .description {
+  .image-info .title,
+  .image-info .description {
     padding: 5px;
   }
   
-  .ImageInfo .content-wrapper {
+  .image-info .content-wrapper {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -325,7 +325,7 @@
     font-size:1.5vh;
   }
   
-  .ImageInfo .content-wrapper img {
+  .image-info .content-wrapper img {
     width: 100%;
   }
 
@@ -400,7 +400,7 @@
 
 
   @media screen and (max-width:768px){
-    .ImageInfo .content-wrapper{
+    .image-info .content-wrapper{
       width:95%;
     }
   }

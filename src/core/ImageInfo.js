@@ -4,6 +4,7 @@ export default class ImageInfo {
   
     constructor({ $target, data, modalClose }) {
       const $imageInfo = document.createElement("div");
+      $imageInfo.className = "image-info";
       this.$imageInfo = $imageInfo;
       $target.appendChild($imageInfo);
   
