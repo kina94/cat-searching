@@ -22,14 +22,8 @@ export default class App {
     const savedHistory = localStorage.getItem('search')
     const savedCats = localStorage.getItem('cats')
 
-    //function
-    const loadingToggle = () => {
-      this.Loading.setState(this.Loading.state ? false : true)
-      document.querySelector('#App').style.pointerEvents = this.Loading.state ? 'none' : 'auto'
-    }
-
     const handleSearch = async (keyword, isRandom) => {
-      loadingToggle()
+      this.Loading.setState(true)
       let res = null
       if (isRandom) {
         res = await api.randomFetchCats()
@@ -38,17 +32,17 @@ export default class App {
       }
       this.searchResult.setState(res.data)
       localStorage.setItem('cats', JSON.stringify(res.data))
-      loadingToggle()
+      this.Loading.setState(false)
     }
 
     //components
     this.header = new Header({
       $target,
       onClick: async () => {
-        loadingToggle()
+        this.Loading.setState(true)
         const catGif = await api.theCatApi()
         this.searchResult.setState(catGif[0])
-        loadingToggle()
+        this.Loading.setState(false)
       }
     })
 
@@ -64,13 +58,13 @@ export default class App {
       $target,
       initialData: JSON.parse(savedCats),
       onClick: async (image) => {
-        loadingToggle()
+        this.Loading.setState(true)
         const catInfo = await api.fetchCatInfo(image.id)
         this.imageInfo.setState({
           visible: true,
           catInfo: catInfo.data
         })
-        loadingToggle()
+        this.Loading.setState(false)
       },
     });
 
