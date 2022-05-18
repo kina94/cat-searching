@@ -23,6 +23,7 @@ export default class Loading {
         </div>
         `
         
+        document.querySelector('#App').style.pointerEvents = this.state ? 'none' : 'auto'
         this.$Loading.style.display = this.state ? 'block' : 'none'
     }
 }
